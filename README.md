@@ -1,17 +1,27 @@
-# Time Series Forecasting App
+# 📈 Forecast Tool
 
 Interactive app for time series forecasting with data preprocessing, multiple models with hyperparameter settings and model comparison.
 
+![Showcase](docs/figures/forecast-demo.png)
 
 ## Key Features
 
-- **Three Forecasting Models Implemented**: ARIMA (statistical), Prophet (business-focused), N-BEATS (deep learning)
-- **Easy Model Addition**: Responsive UI for easy new model implementation
-- **Smart Recommendations**: Models can provide hyperparameter recommendations based on time series qualities
-- **Data Preprocessing**: Automatic gap detection/filling and outlier removal
-- **Model Comparison**: Side-by-side evaluation with MAE and RMSE metrics
-- **Easy Metric Addition**: Responsive UI for easy new metric implementation
-- **Interactive UI**: Clean interface with interactive visualizations
+🛠️ **Multiple Forecasting Models Implemented**:
+
+- ARIMA _(statistical)_
+- Prophet _(business-focused)_
+- N-BEATS _(deep learning)_
+
+🧠 **Smart Recommendations**: Models can provide hyperparameter recommendations based on qualities of the time series.
+
+🧹 **Data Preprocessing**: Automatic gap detection, filling and outlier removal.
+
+🏆 **Model Comparison**: Side-by-side evaluation with MAE and RMSE metrics.
+
+🧩 **Easy Code Extension**: Responsive UI for easy new model or metric implementation.
+
+✨ **Interactive UI**: Clean interface with interactive visualizations.
+
 
 ## Quick Start
 
@@ -36,22 +46,24 @@ streamlit run app.py
 
 
 
-## Usage flow
+## Usage flow ➡️
 
 1. Upload CSV with date and value columns
 2. Select columns and apply preprocessing
-3. Choose a model tab (ARIMA/Prophet/N-BEATS)
+3. Choose a model tab
 4. Configure hyperparameters (or use recommendations)
 5. Specify forecast horizon and evaluation train-test split
 6. Train model
 7. Compare trained models in the comparison tab
 
 
-## Expected Data Upload Format
+#### Expected Data Upload Format 📤
 
-User can upload CSV containing multiple columns, but must include:
-- At least one **datetime column** (any standard format)
-- At least one **numeric value column** to forecast
+User can upload CSV containing multiple columns, but must include and select:
+- One **datetime column** (any standard format)
+- One **numeric value column** to forecast
+
+Additional columns are ignored unless explicitly selected.
 
 Example:
 ```csv
@@ -60,4 +72,33 @@ date,sales,temperature,value
 2024-01-02,105,16,241
 2024-01-03,102,14,238
 ```
-User can select which columns to use for forecasting during upload.
+
+
+## Architecture
+
+```
+forecast/
+├── app.py                    # Main application
+├── models/                   # ARIMA, Prophet, N-BEATS implementations
+├── services/                 # Data and model orchestration
+├── ui/                       # Streamlit components
+├── utils/                    # Evaluation, plotting, validation
+└── state/                    # Session management
+```
+
+
+## Tech Stack
+
+- **Streamlit** - UI framework
+- **statsmodels** - ARIMA + statistical tests  
+- **Prophet** - Forecasting with seasonality
+- **Darts** - N-BEATS implementation
+- **Plotly** - Interactive visualizations
+- **pandas/numpy** - Data manipulation
+
+
+## Design & Modeling Approach 
+
+For a detailed explanation of strategy concerning app architecture, functionalities, preprocessing, model selection, hyperparameter recommendations, and evaluation see:
+
+📄 [APPROACH.md](docs/APPROACH.md)
