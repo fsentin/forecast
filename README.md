@@ -1,6 +1,9 @@
 # 📈 Forecast Tool
 
-Interactive app for time series forecasting with data preprocessing, multiple models with hyperparameter settings and model comparison.
+<br>
+
+Quickly explore and understand time series forecasting.
+
 
 ![Showcase](docs/figures/forecast-demo.png)
 
