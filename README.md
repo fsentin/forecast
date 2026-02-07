@@ -93,11 +93,11 @@ forecast/
 ## Tech Stack
 
 - **Streamlit** - UI framework
+- **Plotly** - Interactive visualizations
+- **pandas/numpy** - Data manipulation
 - **statsmodels** - ARIMA + statistical tests  
 - **Prophet** - Forecasting with seasonality
 - **Darts** - N-BEATS implementation
-- **Plotly** - Interactive visualizations
-- **pandas/numpy** - Data manipulation
 
 
 ## Design & Modeling Approach 
