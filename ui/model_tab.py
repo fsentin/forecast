@@ -110,6 +110,8 @@ def render_model_tab(
                     fig = plot_forecast(
                         historical_data=historical_data,
                         forecast_data=forecast,
+                        historical_color=CHART_COLORS['historical'],
+                        forecast_color=CHART_COLORS['forecast'],
                         height=500
                     )
                     st.plotly_chart(fig, width='stretch')
@@ -137,8 +139,8 @@ def render_model_tab(
                             test_predictions=test_predictions,
                             forecast_data=forecast,
                             train_color=CHART_COLORS['historical'],
-                            test_color="#2ca02c",
-                            prediction_color="#ff7f0e",
+                            test_color=CHART_COLORS['test'],
+                            prediction_color=CHART_COLORS['prediction'],
                             forecast_color=CHART_COLORS['forecast'],
                             height=400
                         )
