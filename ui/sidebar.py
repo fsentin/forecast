@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from state import AppState
 from services import DataService
-from utils.input_validation import validate_columns
+from utils.input_validation import validate_columns, validate_timeseries_size
 
 def render_sidebar():
     """Render the sidebar for data upload and configuration.
@@ -27,6 +27,13 @@ def render_sidebar():
     # Load data
     data = pd.read_csv(uploaded_file)
     columns = data.columns.tolist()
+
+    # Validate dataset size before proceeding
+    is_valid_size, size_errors = validate_timeseries_size(data)
+    if not is_valid_size:
+        for error in size_errors:
+            st.sidebar.error(f"⚠️ {error}")
+        return
     
     if len(columns) < 2:
         st.sidebar.error("⚠️ The dataset must have at least two columns.")
@@ -117,6 +124,13 @@ def _handle_data_load(data: pd.DataFrame, date_column: str, value_column: str, r
     try:
         # Prepare dataframe using service
         df = DataService.prepare_dataframe(data, date_column, value_column)
+
+        # Validate time series size
+        is_valid_size, size_errors = validate_timeseries_size(df)
+        if not is_valid_size:
+            for error in size_errors:
+                st.sidebar.error(f"⚠️ {error}")
+            return
         
         # Optionally remove outliers
         if remove_outliers:
