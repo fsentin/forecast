@@ -1,5 +1,24 @@
 # Technical Approach & Design Documentation
 
+**Table of Contents**
+
+[Decisions made & Trade-offs](#development-methodology)
+1. [Development Methodology](#development-methodology)
+2. [Target User](#target-user)
+3. [Model Selection](#model-selection)
+4. [Model Evaluation Strategy](#model-evaluation-strategy---traintest-splitting)
+5. [Model Training - Hyperparameter Recommendations](#model-training---hyperparameter-recommendations)
+6. [Code Architecture](#code-architecture)
+7. [Data Preprocessing](#data-preprocessing---gap-detection--filling)
+8. [Code Quality Practices](#code-quality-practices)
+   
+[Known Limitations](#known-limitations)
+
+[Future Work](#future-work)
+
+[Inspiration & Resources](#inspiration--resources)
+
+---
 
 ### Development Methodology
 
@@ -279,3 +298,4 @@ Features needing refactoring of current structure:
 
 **Development Tools**  
 🤖 Claude Code | 💬 ChatGPT
+
