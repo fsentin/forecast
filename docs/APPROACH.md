@@ -1,7 +1,7 @@
 # Technical Approach & Design Documentation
 
 
-## Development Methodology
+### Development Methodology
 
 **Aspect**: Project development approach under time constraints
 
@@ -28,7 +28,7 @@
 - ❌ Documentation delayed until end - some implementation details forgotten
 
 
-## Target User
+### Target User
 
 **Aspect**: Goal of forecasting application
 
@@ -53,7 +53,7 @@
 - ❌ Requires more user engagement
 
 
-## Model Selection
+### Model Selection
 
 **Aspect**: Which forecasting models to implement
 
@@ -81,7 +81,7 @@
 **Implementation**:  `darts` NBEATS_Tiny
 
 
-## Model Evaluation Strategy - Train/Test Splitting
+### Model Evaluation Strategy - Train/Test Splitting
 
 **Choice**: Holdout percentage (default 80/20)
 
@@ -94,7 +94,7 @@ Easy to implement, great for visualization
 - ❌ Single test set may be unrepresentative
 - Future: Rolling window for more robust evaluation
 
-### Metrics
+#### Metrics
 
 **Choice**: MAE and RMSE
 
@@ -109,8 +109,34 @@ Different stakeholders, different priorities. Show both, let user decide.
 - ✅ Users learn differences
 - ❌ Originally included MAPE but removed (breaks with zeros)
 
+#### Model Comparison Strategy
 
-## Architecture
+**Choice**: User-driven selection, not auto-selection
+
+**Rationale**: Different metrics matter in different contexts (MAE vs. RMSE). User evaluates trade-offs rather than trusting black-box "best" model.
+
+**Trade-offs**:
+- ✅ Users learn to evaluate models themselves
+- ✅ Transparent decision-making
+- ❌ Requires more user effort
+
+
+### Model Training - Hyperparameter Recommendations
+
+**Aspect**: Help users choose hyperparameters for model training
+
+**Choice**: Use inherent qualities of the time series instead of hyperparameter optimization
+
+**Rationale**:
+Supports understanding models and shorter execution (meaningful in Streamlit)
+
+**Trade-offs**:
+- ✅ Transparent methodology
+- ✅ Faster than hyperparameter search
+- ✅ Users understand *why*
+- ❌ May not find global optimum (provides interpretable starting point)
+
+### Code Architecture
 
 **Aspect**: Application structure and code organization
 
@@ -118,11 +144,9 @@ Different stakeholders, different priorities. Show both, let user decide.
 
 **Structure**:
 ```
-UI Layer (Streamlit)
+Presentation Layer (Streamlit)
     ↓
-State Management (AppState wrapper)
-    ↓
-Service Layer (DataService, ModelService)
+Application Layer (DataService, ModelService)
     ↓
 Model Layer (ARIMA, Prophet, N-BEATS)
 ```
@@ -140,36 +164,7 @@ Model Layer (ARIMA, Prophet, N-BEATS)
 - ❌ Requires understanding of architecture (documented for team)
 
 
-### Model Comparison Strategy
-
-**Choice**: User-driven selection, not auto-selection
-
-**Rationale**: Different metrics matter in different contexts (MAE vs. RMSE). User evaluates trade-offs rather than trusting black-box "best" model.
-
-**Trade-offs**:
-- ✅ Users learn to evaluate models themselves
-- ✅ Transparent decision-making
-- ❌ Requires more user effort
-
-
-## Model Training - Hyperparameter Recommendations
-
-**Aspect**: Help users choose hyperparameters for model training
-
-**Choice**: Use inherent qualities of the time series instead of hyperparameter optimization
-
-**Rationale**:
-Supports understanding models and shorter execution (meaningful in Streamlit)
-
-**Trade-offs**:
-- ✅ Transparent methodology
-- ✅ Faster than hyperparameter search
-- ✅ Users understand *why*
-- ❌ May not find global optimum (provides interpretable starting point)
-
-
-
-## Data Preprocessing - Gap Detection & Filling
+#### Data Preprocessing - Gap Detection & Filling
 
 **Aspect**: Handling irregular time intervals, common issue with time series
 
@@ -185,8 +180,7 @@ Supports understanding models and shorter execution (meaningful in Streamlit)
 - ❌ Requires user understanding
 
 
-
-## Data Prepocessing - Outlier Detection
+#### Data Prepocessing - Outlier Detection
 
 **Aspect**: Time series data can have outlier occurances
 
@@ -203,8 +197,7 @@ Supports understanding models and shorter execution (meaningful in Streamlit)
 - ❌ May flag legitimate extremes that should be predicted
 
 
-
-### Preprocessing Scope (Known Inconsistency)
+#### Data Preprocessing Scope (Inconsistency)
 
 **Current State**:
 - **Global** (sidebar): Gap filling, outliers → all models
@@ -216,12 +209,13 @@ Supports understanding models and shorter execution (meaningful in Streamlit)
 
 **Trade-offs**:
 - ✅ Pragmatic "get it working" approach
+- ✅ Other implemented models don't require scaling
 - ✅ Models get data they need
 - ❌ Lacks conceptual purity
 - ❌ Illustrates real-world "proper design" vs. "delivery under time constraints" trade-off
 
 
-## Code Quality Practices
+#### Code Quality Practices
 
 **Practices Applied**:
 - **Abstract Base Classes**: Enforce model interface consistency, enable polymorphism
@@ -235,7 +229,6 @@ Supports understanding models and shorter execution (meaningful in Streamlit)
 - ✅ Improve maintainability, expendability and testability
 - ❌ Add code verbosity and implementation time
 
----
 
 ## Known Limitations
 
@@ -257,7 +250,6 @@ Out of scope due to time constraints.
 Due to end-to-end make it work focus.
 - **Some edge cases not caught**: Horizon >> training size, duplicate timestamps
 
----
 
 ## Future Work 
 Realistic suggested add-ons for the app.
@@ -275,6 +267,15 @@ Features needing refactoring of current structure:
 - Hyperparameter Search
 - Rolling Window CV
 
----
+## Inspiration & Resources
 
-## Conclusion
+**Inspiration**  
+📊 [Streamlit Gallery](https://streamlit.io/gallery)  
+📚 [FER Time-series assignment](https://www.kaggle.com/code/fsentin/mn-0036514645-time-series-ts)
+
+**Data Sources**  
+⚡ [Hourly Energy Consumption](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption)  
+🛒 [E-Commerce Data](https://www.kaggle.com/datasets/carrie1/ecommerce-data)
+
+**Development Tools**  
+🤖 Claude Code | 💬 ChatGPT
