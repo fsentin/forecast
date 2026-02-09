@@ -251,21 +251,21 @@ Model Layer (ARIMA, Prophet, N-BEATS)
 
 ## Known Limitations
 
-### Prepocessing architecture
+#### Prepocessing architecture
 
-### Model Evaluation Architecture
+#### Model Evaluation Architecture
 
-### User Experience
+#### User Experience
 Mostly result from leftover code from fast prototype version to refactored version.
 - **Inconsistent spinners**
 - **Mixed Error Handling Strategies**
 
-### Code Quality
+#### Code Quality
 Out of scope due to time constraints.
 - **No structured logging**
 - **Missing UI docstrings**
 
-### Input Validation
+#### Input Validation
 Due to end-to-end make it work focus.
 - **Some edge cases not caught**: Horizon >> training size, duplicate timestamps
 
@@ -298,4 +298,5 @@ Features needing refactoring of current structure:
 
 **Development Tools**  
 🤖 Claude Code | 💬 ChatGPT
+
 
