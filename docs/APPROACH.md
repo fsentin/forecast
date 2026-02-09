@@ -251,9 +251,9 @@ Model Layer (ARIMA, Prophet, N-BEATS)
 
 ## Known Limitations
 
-#### Prepocessing architecture
-
-#### Model Evaluation Architecture
+#### Architecture
+- **Prepocessing architecture**
+- **Model Evaluation Architecture**
 
 #### User Experience
 Mostly result from leftover code from fast prototype version to refactored version.
@@ -264,6 +264,7 @@ Mostly result from leftover code from fast prototype version to refactored versi
 Out of scope due to time constraints.
 - **No structured logging**
 - **Missing UI docstrings**
+
 
 #### Input Validation
 Due to end-to-end make it work focus.
@@ -297,6 +298,7 @@ Features needing refactoring of current structure:
 🛒 [E-Commerce Data](https://www.kaggle.com/datasets/carrie1/ecommerce-data)
 
 **Development Tools**  
-🤖 Claude Code | 💬 ChatGPT
+🤖 Claude | 💬 ChatGPT
+
 
 
